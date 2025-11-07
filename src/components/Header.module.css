@@ -1,0 +1,287 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  transition: all 0.3s ease;
+  background: linear-gradient(to right, #f5f5f5, #fafafa);
+}
+.hamburger {
+  display: none;
+  background: transparent;
+  border: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-left: auto;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  height: 2px;
+  margin: 7px 6px;
+  background: #1a1a1a;
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+}
+.hovered .hamburger span {
+  background: #fff;
+}
+
+/* MOBILE/TABLET PANEL */
+.mobilePanel {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64px; /* adjust if header height changes */
+  background: #000;
+  color: #fff;
+  padding: 10px 14px;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  z-index: 1000;
+}
+.open {
+  display: block;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.mobileParent {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  text-align: left;
+  padding: 12px 10px;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.mobileParent:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+}
+
+.caret {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.9;
+}
+.rot {
+  transform: rotate(180deg);
+}
+
+.mobileSub {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding: 0 10px 8px 14px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, padding 0.2s ease;
+}
+.subOpen {
+  max-height: 300px;
+  padding: 6px 10px 12px 14px;
+}
+
+.mobileSub a,
+.mobileLink {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 8px;
+  border-radius: 8px;
+  font-size: 15px;
+  opacity: 0.95;
+}
+.mobileSub a:hover,
+.mobileLink:hover {
+  background: #ed2024;
+  color: #000;
+}
+
+.mobileCTA {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 16px;
+}
+
+.hovered {
+  background: black;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.hovered .logo {
+  color: white;
+}
+
+.icon {
+  color: #ed2024;
+  margin-right: 6px;
+}
+
+.nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.menuItem {
+  position: relative;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.menuItem:hover {
+  color: #ed2024;
+}
+
+.hovered .menuItem {
+  color: white;
+}
+
+.dropdown {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background: black;
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+  min-width: 160px;
+  padding: 10px 0;
+}
+
+.menuItem:hover .dropdown {
+  display: flex;
+}
+
+.dropdown a {
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.dropdown a:hover {
+  background: #ed2024;
+  color: black;
+}
+
+.demoBtn {
+  background: #ed2024;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.demoBtn:hover {
+  background: #f81629;
+}
+.arrow {
+  margin-left: 6px;
+  font-size: 0.7rem;
+}
+
+.dropdown a svg {
+  margin-left: 8px;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.dropdown a:hover svg {
+  transform: translateX(3px);
+  transition: all 0.2s ease;
+  opacity: 1;
+}
+
+@media (max-width: 575.98px) {
+  @media (max-width: 575.98px) {
+    .header {
+      padding: 12px 16px;
+      position: relative;
+    }
+    .nav {
+      display: none;
+    }
+    .demoBtn {
+      display: none;
+    }
+    .hamburger {
+      display: block;
+    }
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .header {
+    padding: 14px 20px;
+    position: relative;
+  }
+  .nav {
+    display: none;
+  }
+  .demoBtn {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+/* 768–991px — desktop nav on */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .header {
+    padding: 14px 28px;
+  }
+  .hamburger,
+  .mobilePanel {
+    display: none;
+  }
+  .nav {
+    display: flex;
+    gap: 28px;
+  }
+}
+
+/* 992–1199px */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .header {
+    padding: 15px 32px;
+  }
+  .nav {
+    gap: 32px;
+  }
+}
+
+/* 1200–1399px */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  .header {
+    padding: 15px 36px;
+  }
+  .nav {
+    gap: 36px;
+  }
+}

@@ -1,0 +1,200 @@
+:root {
+  --bg: #f5f6f7;
+  --card: #fff;
+  --ink: #101010;
+  --muted: #545454;
+  --shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+  --shadow-soft: 0 8px 16px rgba(0, 0, 0, 0.06);
+  --radius: 20px;
+}
+
+/* Section header */
+.section {
+  background: var(--bg);
+  padding: 32px 16px 48px;
+}
+.header {
+  max-width: 1280px;
+  margin: 0 auto 18px;
+  padding: 8px 4px;
+}
+.title {
+  font-size: 42px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+.subtitle {
+  max-width: 72ch;
+  font-size: 18px;
+  line-height: 1.65;
+  color: #3a3a3a;
+  margin: 0;
+}
+
+/* Grid of cards */
+.grid {
+  max-width: 1280px;
+  margin: 20px auto 0;
+  display: grid;
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  display: flex;              /* simpler than grid here */
+  flex-direction: column;     /* content then media */
+  overflow: hidden;           /* <- keep children inside the card */
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.cardBody {
+  padding: 22px 20px 16px;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+
+/* CTA section (Learn More) */
+.learn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #111;
+  margin-top: auto; /* pushes link to bottom of content block */
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.learn:hover {
+  color: var(--accent);
+}
+
+.media {
+  /* remove the push that causes overflow */
+  margin: 0;                  /* <- was margin-right: 50px */
+  width: 100%;
+  display: block;
+  /* no need for its own radius; the card clips it */
+  border-radius: 0;
+  overflow: hidden;
+  /* padding: 20px; */
+}
+
+.img {
+  width: 100%;
+  height: 150px;
+  display: block;
+  object-fit: cover;
+
+  /* margin: 20px; */
+}
+.learn:hover {
+  background: #f2f2f2;
+}
+.chev {
+  transition: transform 0.15s ease;
+}
+.learn:hover .chev {
+  transform: translateX(3px);
+}
+
+/* Media with concave arc mask */
+
+
+
+/* —— Breakpoints (your exact ranges) —— */
+
+/* <576 */
+@media (max-width: 575.98px) {
+  .section {
+    padding: 24px 12px 40px;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .subtitle {
+    font-size: 16px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .img {
+    height: 160px;
+  }
+}
+
+/* 576–767 */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .title {
+    font-size: 36px;
+  }
+  .subtitle {
+    font-size: 17px;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+/* 768–991 */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .title {
+    font-size: 44px;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .img {
+    height: 180px;
+  }
+}
+
+/* 992–1199 */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .title {
+    font-size: 48px;
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .img {
+    height: 190px;
+  }
+}
+
+/* 1200–1399 */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  .title {
+    font-size: 52px;
+  }
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .img {
+    height: 195px;
+  }
+}
+
+/* ≥1400 */
+@media (min-width: 1400px) {
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+  }
+
+}

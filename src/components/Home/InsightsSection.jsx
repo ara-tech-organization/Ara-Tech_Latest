@@ -35,7 +35,7 @@ export default function InsightsSection() {
             {/* Decorative thumb / replace src with real image */}
             <div className={styles.thumb}>
               <img
-                src="/resource-card-1.png"
+                src="./resource-card-1.png"
                 alt="The AI-empowered CIO cover"
                 loading="lazy"
               />
@@ -58,7 +58,7 @@ export default function InsightsSection() {
 
             <div className={styles.thumb}>
               <img
-                src="/resource-card-2.png"
+                src="./resource-card-2.png"
                 alt="Customer Service Benchmark 2025"
                 loading="lazy"
               />
