@@ -1,143 +1,190 @@
-/* ---------- Base (mobile-first: <576px) ---------- */
-.hero {
-  background: #f5f6f7; /* soft light gray like the ref */
+:root {
+  --bg: #ffffff;
+  --ink: #0f1724;
+  --muted: #616f7b;
+  --accent: #ff6a00;
+  --accent-2: #2f7cff;
+  --radius: 14px;
+  --max: 1200px;
 }
 
-.container {
-  max-width: 1200px;
+*{
+  font-family: 'Poppins',sans-serif;
+}
+
+/* Base layout */
+.hero {
+  background: var(--bg);
+  color: var(--ink);
+  padding: 56px 20px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.inner {
+  max-width: var(--max);
   margin: 0 auto;
-  padding: 40px 20px 0; /* top space, no bottom so image can sit flush */
   display: grid;
   grid-template-columns: 1fr;
+  gap: 28px;
   align-items: center;
   position: relative;
-  overflow: hidden;
 }
 
+/* Copy */
 .copy {
+  padding: 4px 2px;
   z-index: 2;
-  max-width: 680px;
 }
 
+.badge {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), #ff8a3a);
+  box-shadow: 0 4px 10px rgba(255,106,0,0.12);
+  display: inline-block;
+}
+
+/* Title / paragraph */
 .title {
-  font-size: 34px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  font-weight: 700;
-  color: #0e0e0e;
   margin: 0 0 18px;
+  font-weight: 700;
+  line-height: 1.02;
+  font-size: clamp(28px, 4.2vw, 48px);
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 
 .subtitle {
+  margin: 0 0 22px;
+  color: var(--muted);
+  max-width: 68ch;
   font-size: 16px;
-  line-height: 1.65;
-  color: #333;
-  max-width: 52ch;
-  margin: 0 0 28px;
+  line-height: 1.6;
 }
 
-.cta {
+/* CTAs */
+.ctaRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.ctaPrimary {
   display: inline-block;
-  background: #ff6a00;
-  color: #fff;
+  background: var(--accent);
+  color: white;
   text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 10px;
   font-weight: 700;
-  padding: 14px 24px;
-  border-radius: 999px;
-  transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
-  box-shadow: 0 8px 20px rgba(255,106,0,.25);
+  box-shadow: 0 12px 30px rgba(15, 18, 36, 0.06), 0 6px 16px rgba(255,106,0,0.12);
+  transition: transform .14s ease, box-shadow .14s ease;
 }
-.cta:hover { background: #ea5f00; }
-.cta:active { transform: translateY(1px); box-shadow: 0 6px 14px rgba(255,106,0,.22); }
+.ctaPrimary:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(15,18,36,0.08); }
 
-.media {
+.ctaGhost {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--accent-2);
+  border: 1px solid rgba(47,124,255,0.12);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* small trust list */
+.trustList {
+  display:flex;
+  gap:14px;
+  margin: 8px 0 0;
+  list-style:none;
+  padding: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Visual / Illustration */
+.visual {
+  display:flex;
+  align-items:center;
+  justify-content:center;
   position: relative;
-  margin-top: 24px;
-  /* create the diagonal right-side slab feel */
-  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-.image {
-  width: 100%;
+/* the SVG illustration */
+.graphic {
+  width: min(560px, 92%);
   height: auto;
-  display: block;
-  object-fit: cover;
+  display:block;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff, #fbfbfd);
+  box-shadow: 0 18px 40px rgba(16,24,40,0.06);
 }
 
-/* ---------- 576–767px ---------- */
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .container {
-    padding: 56px 24px 0;
-  }
-  .title { font-size: 42px; }
-  .subtitle { font-size: 17px; }
-  .media { clip-path: polygon(28% 0, 100% 0, 100% 100%, 0% 100%); }
+/* side card that floats over graphic */
+.sideCard {
+  position: absolute;
+  right: calc(8% - 6px);
+  bottom: calc(6% - 6px);
+  background: white;
+  border-radius: 12px;
+  padding: 12px 14px;
+  min-width: 160px;
+  box-shadow: 0 12px 30px rgba(15,18,36,0.06);
+  border: 1px solid rgba(15,18,36,0.04);
+  text-align: left;
 }
 
-/* ---------- 768–991px ---------- */
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .container {
-    grid-template-columns: 1.1fr 1fr;
-    gap: 24px;
-    padding: 64px 28px 0;
-  }
-  .title { font-size: 54px; }
-  .subtitle { font-size: 18px; }
-  .media {
-    margin-top: 0;
-    justify-self: end;
-    max-height: 520px;
-    clip-path: polygon(35% 0, 100% 0, 100% 100%, 8% 100%);
-  }
-  .image {
-    height: 100%;
-    object-fit: cover;
-  }
+.sideCardTitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
 }
 
-/* ---------- 992–1199px ---------- */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .container {
-    grid-template-columns: 1.05fr 1fr;
-    gap: 28px;
-    padding: 80px 32px 0;
-  }
-  .title { font-size: 64px; }
-  .subtitle { font-size: 18px; }
-  .media {
-    max-height: 560px;
-    clip-path: polygon(38% 0, 100% 0, 100% 100%, 12% 100%);
-  }
+.sideCardValue {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
 }
 
-/* ---------- 1200–1399px ---------- */
-@media (min-width: 1200px) and (max-width: 1399.98px) {
-  .container {
-    max-width: 1280px;
-    grid-template-columns: 1fr 1fr;
+.sideCardNote {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 6px;
+}
+
+/* Responsive two-column on medium+ */
+@media (min-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr 520px;
     gap: 36px;
-    padding: 96px 36px 0;
   }
-  .title { font-size: 72px; }
-  .subtitle { font-size: 18.5px; }
-  .media {
-    max-height: 620px;
-    clip-path: polygon(40% 0, 100% 0, 100% 100%, 14% 100%);
-  }
+
+  .visual { justify-self: end; }
 }
 
-/* ---------- ≥1400px (polish) ---------- */
+/* polish for large screens */
 @media (min-width: 1400px) {
-  .container {
-    max-width: 1360px;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    padding: 110px 120px 0;
-  }
-  .title { font-size: 80px; }
-  .subtitle { font-size: 19px; }
-  .media {
-    max-height: 680px;
-    clip-path: polygon(42% 0, 100% 0, 100% 100%, 16% 100%);
-  }
+  .inner { grid-template-columns: 1fr 620px; gap: 56px; }
+  .title { font-size: 64px; }
+  .graphic { width: 620px; }
+}
+
+/* Mobility for small screens */
+@media (max-width: 479px) {
+  .subtitle { font-size: 15px; }
+  .ctaPrimary { padding: 10px 12px; }
+  .trustList { gap: 10px; font-size: 12px; }
+  .sideCard { right: 6%; bottom: 10%; min-width: 140px; padding: 10px; }
 }

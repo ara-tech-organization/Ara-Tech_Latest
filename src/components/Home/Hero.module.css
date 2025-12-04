@@ -2,16 +2,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  height: 92vh;
-  background: radial-gradient(circle at 10% 20%, #ffe5e6 0%, transparent 50%),
-              radial-gradient(circle at 90% 70%, #ffe0cc 0%, transparent 50%),
-              #ffffff;
+  /* text-align: center; */
+  height: 75vh;
+  background:  #fae5e5;
   padding: 0 20px;
 }
 
 .content {
-  max-width: 900px;
+  max-width: 900px;  
+}
+
+.left {
+  max-width: 50%;
 }
 
 .title {
@@ -25,22 +27,51 @@
 
 .highlight {
   color: #ed2024;
+  text-align: start;
 }
 
 .subtitle {
-  font-family: "Poppins", sans-serif;
   font-size: 1.125rem;
   color: #333;
   line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto 2rem auto;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  text-align: start;
 }
 
 .buttons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+}
+
+.right {
+  width: 50%;
+  position: relative;
+  top: 0;
+  align-self: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  padding: 0;
+}
+
+.heroVideo {
+  display: block;
+  margin: 0;
+  margin-top: 0px;
+  width: 100%;
+  max-width: 1536px;  /* same as your old heroImg */
+  /* height: 950px; */
+  /* background-color: green; */
+  object-fit: contain;
+  position: relative;
+  z-index: 5;
+}
+
+.iconArc,
+.arcIcon {
+  z-index: 1; /* <-- pushes icons behind video */
 }
 
 .primaryBtn {
@@ -54,6 +85,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(237, 32, 36, 0.3);
+  text-decoration: none;
 }
 
 .primaryBtn:hover {
@@ -76,10 +108,231 @@
   padding: 10px 24px;
   border-radius: 8px;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .secondaryBtn:hover {
   background-color: #ed2024;
   color: white;
   transform: translateY(-2px);
+}
+@media (max-width: 991px) {
+  .hero {
+    padding: 40px 24px !important; /* tighter left-right spacing */
+    text-align: center;
+  }
+
+  .left {
+    max-width: 100%;
+  }
+
+  .right {
+    display: none; /* hide bird */
+  }
+  .buttons {
+    align-items: center;
+    justify-content: center;
+  }
+}
+/* < 576px */
+@media (max-width: 575.98px) {
+  .hero {
+    height: auto;
+    padding: 48px 16px;
+    background: radial-gradient(circle at 15% 15%, #ffe5e6 0%, transparent 45%),
+      radial-gradient(circle at 85% 80%, #ffe0cc 0%, transparent 45%), #ffffff;
+  }
+
+  .content {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+  .subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .buttons {
+    gap: 0.75rem;
+  }
+  .primaryBtn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  .secondaryBtn {
+    padding: 8px 18px;
+    font-size: 0.95rem;
+  }
+    .iconArc{
+    display: none;
+  }
+}
+
+/* 576–768px */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .hero {
+    height: auto;
+    padding: 56px 24px;
+    background: radial-gradient(circle at 12% 18%, #ffe5e6 0%, transparent 48%),
+      radial-gradient(circle at 88% 78%, #ffe0cc 0%, transparent 48%), #ffffff;
+  }
+
+  .title {
+    font-size: 2.25rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .primaryBtn {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  .secondaryBtn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+    .iconArc{
+    display: none;
+  }
+}
+
+/* 768–991px */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .hero {
+    height: 86vh;
+    padding: 60px 28px;
+  }
+
+  .content {
+    max-width: 820px;
+  }
+  .title {
+    font-size: 2.5rem;
+  }
+  .subtitle {
+    font-size: 1.05rem;
+  }
+  .iconArc{
+    display: none;
+  }
+}
+
+/* 992–1199px */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .hero {
+    height: 90vh;
+    /* padding: 64px 32px; */
+  }
+
+  .content {
+    max-width: 860px;
+  }
+  .title {
+    font-size: 2.75rem;
+  }
+  .subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* 1200–1399px */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  .hero {
+    height: 92vh;
+    /* padding: 72px 36px; */
+  }
+
+  .content {
+    max-width: 900px;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .subtitle {
+    font-size: 1.125rem;
+  }
+}
+.iconArc {
+  position: absolute;
+  top: 50px; /* adjust depending on spacing */
+  left: 75%;
+  transform: translateX(-50%);
+  width: 450px; /* ← wider arc */
+  height: 580px;
+  pointer-events: none;
+}
+
+/* Base icon style */
+.arcIcon {
+  position: absolute;
+  font-size: 30px;
+  color: #0066ff;
+  animation: float 3s infinite ease-in-out;
+}
+
+/* Position each icon along an arc */
+.arcIcon:nth-child(1) {
+  left: -210px;
+  top: 380px;
+  transform: rotate(-18deg);
+  font-size:43px;
+  color: orange;
+}
+.arcIcon:nth-child(2) {
+  left: -10px;
+  top: 150px;
+      color:#333;
+
+
+  font-size: 30px;
+  transform: rotate(-10deg);
+}
+.arcIcon:nth-child(3) {
+  left:-175px;
+  top: 20px;
+  transform: rotate(0deg);
+  font-size: 50px;
+  color:red;
+
+}
+.arcIcon:nth-child(4) {
+  left: 250px;
+  top: 50px;
+  font-size: 50px;
+  transform: rotate(10deg);
+  color: rgb(254, 111, 135)
+}
+.arcIcon:nth-child(5) {
+  left: 280px;
+  top: 180px;
+  transform: rotate(18deg);
+  font-size: 20px;
+}
+.arcIcon:nth-child(6) {
+  left: 400px;
+  top: 350px;
+  transform: rotate(18deg);
+  color:rgb(98, 221, 248);
+
+}
+
+/* Floating effect */
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }

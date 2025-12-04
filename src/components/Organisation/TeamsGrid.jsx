@@ -38,7 +38,8 @@ export default function TeamsGrid({
   items = defaultItems,
 }) {
   return (
-    <section className={styles.section} aria-labelledby="teams-heading">
+    <section data-aos="fade-up"
+ className={styles.section} aria-labelledby="teams-heading">
       <div className={styles.header}>
         <h2 id="teams-heading" className={styles.title}>{heading}</h2>
         <p className={styles.subtitle}>{subheading}</p>

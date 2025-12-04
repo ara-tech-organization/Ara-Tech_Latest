@@ -1,0 +1,264 @@
+:root{
+  --ink: #071022;
+  --muted: #6f7a84;
+  --accent: #ff6a00;
+  --cardRadius: 18px;
+  --shadowSoft: 0 18px 45px rgba(9,12,20,0.16);
+}
+
+/* SECTION WRAP */
+.wrap{
+  max-width: 1200px;
+  margin: 40px auto 56px;
+  padding: 0 20px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  color: var(--ink);
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:18px;
+  margin-bottom: 22px;
+}
+.kicker{
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin:0 0 4px 0;
+  color: var(--accent);
+}
+.title{
+  margin:0;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.text{
+  margin:0;
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 420px;
+}
+
+/* GRID - big cards */
+.grid{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.item{
+  min-height: 260px;
+}
+
+.subHeading {
+  margin: 50px 0 14px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #071022;
+}
+
+
+
+/* CARD */
+.card{
+  position:relative;
+  display:block;
+  width:100%;
+  aspect-ratio: 16 / 9;         /* big wide cards */
+  border-radius: var(--cardRadius);
+  overflow:hidden;
+  text-decoration:none;
+  color: inherit;
+  box-shadow: 0 10px 30px rgba(9,12,20,0.14);
+  transform-origin: center;
+  transition:
+    transform 260ms cubic-bezier(.2,.9,.2,1),
+    box-shadow 260ms ease;
+}
+
+/* THUMBNAIL */
+.thumb{
+  position:absolute;
+  inset:0;
+  background-position: center;
+  background-size: cover;
+  background-repeat:no-repeat;
+  transform-origin:center;
+  filter: saturate(0.96) contrast(0.98) brightness(0.98);
+  transition:
+    transform 420ms cubic-bezier(.19,.9,.22,1),
+    filter 260ms ease;
+}
+
+/* dark gradient on bottom so text is readable */
+.gradient{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(7,12,20,0.02) 0%, rgba(7,12,20,0.5) 55%, rgba(7,12,20,0.9) 100%);
+  mix-blend-mode:multiply;
+  opacity:0.96;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* INFO PANEL: large & sliding */
+.info{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding: 18px 20px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  color:#fff;
+  z-index:2;
+  transform: translateY(38%);          /* show top piece by default */
+  transition: transform 320ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* top row inside info */
+.infoTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+.projectTitle{
+  margin:0;
+  font-size: 18px;
+  font-weight: 800;
+}
+.roleBadge{
+  font-size: 12px;
+  font-weight: 700;
+  padding:5px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+/* subtitle + description */
+.subtitle{
+  margin:0;
+  font-size: 14px;
+  color: rgba(255,255,255,0.95);
+}
+.description{
+  margin:4px 0 0;
+  font-size: 14px;
+  line-height:1.55;
+  color: rgba(255,255,255,0.94);
+  max-width: 60ch;
+}
+
+/* tags */
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top: 6px;
+}
+.tag{
+  font-size: 12px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* bottom info row */
+.footerRow{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:10px;
+  gap:10px;
+}
+.linkText{
+  font-size: 13px;
+  font-weight:700;
+  letter-spacing: 0.02em;
+}
+.meta{
+  font-size: 12px;
+  color: rgba(255,255,255,0.85);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.dot{ opacity:0.7; }
+
+/* HOVER / FOCUS STATES ------------- */
+.card:hover,
+.card:focus-visible{
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadowSoft);
+}
+.card:hover .thumb,
+.card:focus-visible .thumb{
+  transform: scale(1.07);
+  filter: saturate(1.04) contrast(1.03);
+}
+.card:hover .info,
+.card:focus-visible .info{
+  transform: translateY(0);    /* slide full panel up */
+}
+
+/* focus ring */
+.card:focus-visible{
+  outline:none;
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.8),
+    0 0 0 4px rgba(17,122,255,0.55),
+    var(--shadowSoft);
+}
+
+/* RESPONSIVE ----------------------- */
+@media (max-width: 960px){
+  .grid{
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 720px){
+  .header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .text{
+    max-width:none;
+  }
+  .wrap{
+    margin-top:30px;
+  }
+  .card{
+    aspect-ratio: 16 / 10;    /* slightly taller on small screens */
+  }
+  .info{
+    transform: translateY(30%);  /* show a bit more by default */
+  }
+}
+
+@media (max-width: 480px){
+  .wrap{
+    padding: 0 14px;
+  }
+  .info{
+    transform: translateY(0); /* always fully visible on tiny screens */
+  }
+  .card:hover,
+  .card:focus-visible{
+    transform:none;
+    box-shadow:0 10px 26px rgba(9,12,20,0.18);
+  }
+}

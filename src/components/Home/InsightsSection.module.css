@@ -44,6 +44,14 @@
     align-items: start;
   }
 }
+.listIcon {
+  color: #6b4eff;
+  font-size: 20px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Cards */
 .card {
@@ -54,7 +62,7 @@
   padding: 24px;
   box-shadow: var(--shadow);
   overflow: hidden;
-  min-height: 460px;
+  min-height: 490px;
 }
 
 .purple {

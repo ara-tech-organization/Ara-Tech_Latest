@@ -1,0 +1,281 @@
+:root {
+  --bg: #fbfbfb;
+  --ink: #0f1724;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 20px rgba(16,24,40,0.06);
+  --accent: #0ea5a4;
+}
+
+/* Section layout */
+.section {
+  background: linear-gradient(180deg, rgba(14,165,164,0.02), rgba(124,58,237,0.01));
+  padding: 64px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Left (text) and right (columns) */
+.left {
+  padding-right: 20px;
+}
+
+.title {
+  color: var(--ink);
+  font-size: 44px;
+  line-height: 1.02;
+  margin: 0 0 10px 0;
+  font-weight: 800;
+  padding: 10px;
+}
+
+.titleAccent {
+  display: inline-block;
+  color: var(--ink);
+  background: linear-gradient(90deg, #7c3aed, #f97316);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* padding-left: 6px; */
+  padding-bottom: 5px;
+  margin-top: 5px;
+}
+
+.lead {
+  color: var(--muted);
+  max-width: 520px;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 16px;
+}
+
+
+.right {
+  display: flex;
+  gap: 22px;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.column {
+  width: 220px;
+  height: 460px;
+  overflow: hidden;
+  border-radius: 0;
+  flex: 0 0 220px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  display: flex;
+  align-items: flex-start;
+}
+
+
+
+/* ---------- Subtle alternating card backgrounds (light variations) ---------- */
+.column .card:nth-child(4n + 1) { background: rgba(124,58,237,0.03); }
+.column .card:nth-child(4n + 2) { background: rgba(14,165,164,0.03); }
+.column .card:nth-child(4n + 3) { background: rgba(249,115,22,0.03); }
+.column .card:nth-child(4n + 4) { background: rgba(99,102,241,0.02); }
+
+/* keep the border slightly darker on hover to read as a tile */
+.column .card:hover { border-color: rgba(16,24,40,0.08); }
+
+.scroller {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  /* ensure the whole block can translate up */
+}
+
+/* Each card item */
+.card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+  border: 1px solid rgba(16,24,40,0.03);
+  min-height: 96px;
+  transform-origin: center;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+/* hover lift (optional) */
+.card:hover {
+  transform: translateY(-6px);
+  /* box-shadow: 0 18px 36px rgba(16,24,40,0.12); */
+}
+
+
+
+.emoji {
+  font-size: 26px;
+  display: inline-block;
+}
+
+/* Text */
+.cardTitle {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+/* DIFFERENT SPEEDS: we animate the .scroller element inside each column */
+/* Animation moves the scroller up by 50% (because items are duplicated) */
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); } /* half because of duplicate content */
+}
+
+/* apply different durations per column (data-col attribute index) */
+.column[data-col="0"] .scroller {
+  animation: scrollUp 18s linear infinite;
+}
+
+.column[data-col="1"] .scroller {
+  animation: scrollUp 25s linear infinite;
+}
+
+.column[data-col="2"] .scroller {
+  animation: scrollUp 32s linear infinite;
+}
+
+/* small pause on hover to let user interact */
+.column:hover .scroller {
+  animation-play-state: paused;
+}
+
+
+@media (min-width: 980px) {
+
+  .container {
+    grid-template-columns: minmax(420px, 1fr) 560px;
+    /* column-gap: 100px; */
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ensure right block anchors to the right grid cell */
+  .right {
+    justify-self: end;
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+
+  /* narrower column width so it doesn't try to push into left area */
+  .column {
+    width: 200px;   /* slightly smaller to avoid overlap on narrower screens */
+    flex: 0 0 200px;
+    height: 460px;
+    overflow: hidden;
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+
+/* Mobile: stack, and stop auto-scroll for usability */
+@media (max-width: 760px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .right {
+    justify-content: center;
+    gap: 14px;
+  }
+  .column {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    overflow: visible;
+    padding: 12px;
+  }
+  .scroller { animation: none !important; }
+  .card { min-height: 76px; padding: 12px; gap: 10px; }
+}
+@media (max-width: 575.98px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .right {
+    display: none;
+  }
+
+  .column {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .scroller {
+    animation: none !important;
+  }
+}
+
+/* 576px – 767px (small tablets) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .container {
+    grid-template-columns: 1fr; /* stack left text on top, columns below */
+    text-align: center;
+    gap: 32px;
+  }
+
+  .left {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* exactly two columns */
+    gap: 16px 20px; /* row and column gaps */
+    justify-content: center;
+    align-items: start;
+  }
+
+  .column {
+    width: 100%;
+    flex: none;
+    height: auto;
+    overflow: visible;
+  }
+
+  .scroller {
+    animation: none !important; /* disable scroll on small devices */
+    padding: 12px;
+  }
+
+  .card {
+    min-height: auto;
+  }
+}

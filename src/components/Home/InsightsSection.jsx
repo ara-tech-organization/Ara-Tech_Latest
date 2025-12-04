@@ -1,5 +1,11 @@
 import React from "react";
 import styles from "./InsightsSection.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMobileScreenButton,
+  faCubes,
+  faShieldHalved,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Arrow = () => (
   <svg
@@ -15,117 +21,134 @@ const Arrow = () => (
 
 export default function InsightsSection() {
   return (
-    <section className={styles.section}>
+    <section data-aos="fade-up" className={styles.section}>
       <div className={styles.container}>
+        {/* From hero */}
         <h2 className={styles.title}>Get the insights you need</h2>
 
         <div className={styles.grid}>
-          {/* Left card */}
+          {/* Left card — “Design. Code. Conquer” section */}
           <article className={`${styles.card} ${styles.purple}`}>
-            <span className={styles.badge}>IT Service Management</span>
-            <h3 className={styles.cardTitle}>The AI-empowered CIO</h3>
+            {/* <span className={styles.badge}>Key Offering</span> */}
+            <h3 className={styles.cardTitle}>Design. Code. Conquer</h3>
             <p className={styles.cardDesc}>
-              4 technology leaders reveal the strategies for making AI real,
-              relevant, and uncomplicated
+              From idea to market-ready solution. We design delightful
+              experiences, build scalable web & mobile apps, and ship with
+              secure, cloud-ready architectures that grow with your business.
             </p>
-            <a href="#" className={styles.link}>
-              Read more <Arrow />
-            </a>
+            {/* <a href="#" className={styles.link}>
+              See how we build <Arrow />
+            </a> */}
 
-            {/* Decorative thumb / replace src with real image */}
             <div className={styles.thumb}>
               <img
                 src="./resource-card-1.png"
-                alt="The AI-empowered CIO cover"
+                alt="Design. Code. Conquer dashboard"
                 loading="lazy"
               />
             </div>
           </article>
 
-          {/* Middle card */}
+          {/* Middle card — “Watch How It Works” / HappyFox webinar */}
           <article className={`${styles.card} ${styles.sun}`}>
-            <span className={styles.badge}>Customer Service</span>
+            {/* <span className={styles.badge}>Watch How It Works</span> */}
             <h3 className={styles.cardTitle}>
-              2025 Customer Service Benchmark Report
+              Shaping the Future, Empowering Global Success
             </h3>
             <p className={styles.cardDesc}>
-              Compare your support metrics with benchmarks from 32,000+ teams.
-              Uncover AI trends and tactics to boost your performance.
+              From startups to enterprises, our solutions have transformed
+              businesses across industries. We combine creativity with
+              cutting-edge technology to create digital products that make an
+              impact—anytime, anywhere.
             </p>
-            <a href="#" className={styles.link}>
-              Read more <Arrow />
-            </a>
+            {/* <a href="#" className={styles.link}>
+              Watch the webinar <Arrow />
+            </a> */}
 
             <div className={styles.thumb}>
               <img
                 src="./resource-card-2.png"
-                alt="Customer Service Benchmark 2025"
+                alt="HappyFox Assist AI webinar"
                 loading="lazy"
               />
             </div>
           </article>
 
-          {/* Right column list */}
+          {/* Right column — pull “Key Offerings” + highlights */}
           <aside className={styles.sidebar}>
             <span className={`${styles.badge} ${styles.badgeGhost}`}>
-              Other Resources
+              Our Key Offerings
             </span>
             <h3 className={styles.sidebarTitle}>
-              Guides, stories, and playbooks to support every step of your
-              journey
+              Practical solutions that ship fast and scale globally
             </h3>
 
             <ul className={styles.list}>
               <li className={styles.listItem}>
                 <div className={styles.listIcon} aria-hidden="true">
-                  ✦
+                  <FontAwesomeIcon icon={faMobileScreenButton} />
                 </div>
                 <div>
                   <a href="#" className={styles.listLink}>
-                    Customer service, rewired <Arrow />
+                    Mobile & Web App Development
                   </a>
-
                   <p className={styles.listDesc}>
-                    See how AI solves key CS challenges in Forrester’s
-                    Freshworks study.
+                    Modern, scalable apps for iOS, Android, and web platforms.
                   </p>
                 </div>
               </li>
 
               <li className={styles.listItem}>
                 <div className={styles.listIcon} aria-hidden="true">
-                  ▣
+                  <FontAwesomeIcon icon={faCubes} />
                 </div>
                 <div>
                   <a href="#" className={styles.listLink}>
-                    The CIO’s ITSM playbook
+                    CRM &amp; ERP Solutions
                   </a>
                   <p className={styles.listDesc}>
-                    Explore insights from 225 global IT decision-makers.
+                    Custom solutions that streamline operations and accelerate
+                    decision-making.
                   </p>
                 </div>
               </li>
 
               <li className={styles.listItem}>
                 <div className={styles.listIcon} aria-hidden="true">
-                  ⚑
+                  <FontAwesomeIcon icon={faShieldHalved} />
                 </div>
                 <div>
                   <a href="#" className={styles.listLink}>
-                    Tap into the power of people + AI
+                    Data Security Solutions
                   </a>
                   <p className={styles.listDesc}>
-                    How AI is transforming workplace and IT efficiency.
+                    Secure by design to protect data and ensure compliance.
+                  </p>
+                </div>
+              </li>
+              <li className={styles.listItem}>
+                <div className={styles.listIcon} aria-hidden="true">
+                  <FontAwesomeIcon icon={faShieldHalved} />
+                </div>
+                <div>
+                  <a href="#" className={styles.listLink}>
+                    Custom Software Development
+                  </a>
+                  <p className={styles.listDesc}>
+                    Tailored applications that solve real-world business
+                    challenges.
                   </p>
                 </div>
               </li>
             </ul>
 
-            <a href="#" className={styles.cta}>
-              Explore all resources <Arrow />
-            </a>
+            {/* <a href="#" className={styles.cta}>
+              Explore all offerings <Arrow />
+            </a> */}
           </aside>
         </div>
+
+        {/* Optional mini band pulled from screenshot copy */}
       </div>
     </section>
   );

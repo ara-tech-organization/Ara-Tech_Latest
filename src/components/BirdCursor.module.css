@@ -1,0 +1,33 @@
+.bird {
+  position: fixed;
+  width: 50px; /* size of cursor */
+  height: auto;
+  pointer-events: none; /* don't block clicks */
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+
+}
+
+/* When clicked → STOP animation */
+.stop {
+  animation: none !important;
+}
+
+/* Flying wiggle effect */
+@keyframes flap {
+  0% {
+    transform: translate(-50%, -50%) rotate(-4deg);
+  }
+  50% {
+    transform: translate(-50%, -52%) rotate(4deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-4deg);
+  }
+}
+/* Hide bird cursor on tablet + mobile */
+@media (max-width: 991px) {
+  .bird {
+    display: none !important;
+  }
+}

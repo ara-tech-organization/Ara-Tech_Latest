@@ -1,11 +1,21 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;              /* ensure it spans viewport safely */
+  width: 100%;
+  box-sizing: border-box; /* important: keep padding inside width */
+  z-index: 1100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 40px;
+  background: #000;
   transition: all 0.3s ease;
-  background: linear-gradient(to right, #f5f5f5, #fafafa);
+  overflow-x: hidden;
+
 }
+
 .hamburger {
   display: none;
   background: transparent;
@@ -17,10 +27,12 @@
   cursor: pointer;
 }
 .hamburger span {
+  /* color: #fff !important; */
+
   display: block;
   height: 2px;
   margin: 7px 6px;
-  background: #1a1a1a;
+  background: #ffffff;
   transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
 }
 .hovered .hamburger span {
@@ -29,13 +41,13 @@
 
 /* MOBILE/TABLET PANEL */
 .mobilePanel {
-  display: none;
-  position: absolute;
+   position: fixed; /* instead of absolute */
+  top: 64px; /* matches header height */
   left: 0;
   right: 0;
-  top: 64px; /* adjust if header height changes */
+
   background: #000;
-  color: #fff;
+  color: #ffffff;
   padding: 10px 14px;
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
@@ -44,11 +56,25 @@
   overflow: hidden;
   transition: max-height 0.3s ease;
   z-index: 1000;
+  display: none;
 }
 .open {
   display: block;
   max-height: 80vh;
   overflow: auto;
+}
+.activeLink {
+  color: #ed2024 !important;
+
+ border: none;
+
+}
+
+/* ensure chevron also flips and gets colored when active */
+.activeLink .chevron,
+.solBtn.activeLink .chevron {
+  color: #ed2024 !important;
+  opacity: 1;
 }
 
 .mobileParent {
@@ -64,6 +90,7 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  text-decoration: none;
 }
 .mobileParent:hover {
   background: rgba(255, 255, 255, 0.06);
@@ -105,7 +132,7 @@
 .mobileSub a:hover,
 .mobileLink:hover {
   background: #ed2024;
-  color: #000;
+  color: #ffffff;
 }
 
 .mobileCTA {
@@ -125,6 +152,7 @@
   font-weight: bold;
   color: #1a1a1a;
   cursor: pointer;
+  /* width:1000px; */
 }
 
 .hovered .logo {
@@ -145,7 +173,7 @@
 .menuItem {
   position: relative;
   font-size: 16px;
-  color: #333;
+  color: #ffffff;
   cursor: pointer;
   transition: color 0.3s;
   text-decoration: none;
@@ -157,6 +185,12 @@
 
 .hovered .menuItem {
   color: white;
+}
+/* Example: adjust selector names to match your file */
+.menuItem a:focus,
+.menuItem a:focus-visible {
+  outline: none;        /* remove browser focus border */
+  box-shadow: none;     /* just in case */
 }
 
 .dropdown {
@@ -217,6 +251,25 @@
   transition: all 0.2s ease;
   opacity: 1;
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.logoImg {
+  width: 120px;      /* adjust as you like */
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.logoImg:hover {
+  transform: scale(1.05);
+}
+
 
 @media (max-width: 575.98px) {
   @media (max-width: 575.98px) {
@@ -283,5 +336,151 @@
   }
   .nav {
     gap: 36px;
+  }
+}
+.solutionsPanel {
+  position: fixed;
+  top: 74px; /* adjust to match your header height */
+  left: 0;
+  right: 0;
+  background: black;
+  z-index: 1050;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  opacity: 0;
+  transform: translateY(-6px);
+}
+.chevron {
+  font-size: 0.7rem;
+  transition: transform 0.25s ease;
+  opacity: 0.8;
+  left: 5px;
+  position: relative;
+}
+/* visible */
+.show {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* inner centered container that holds the white panel content */
+.panelInner {
+  margin: 0 auto;
+  max-width: 1200px; /* center width used in screenshot */
+  /* background: #ffffff; */
+  border-radius: 12px;
+  padding: 30px 36px;
+  box-shadow: 0 18px 40px rgba(12, 18, 30, 0.09);
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+/* left card (SchoolMate) */
+.solutionCard {
+  min-width: 380px;
+  max-width: 480px;
+  background: #000000;
+  border-radius: 10px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 18px rgba(10, 12, 20, 0.04);
+  border: 1px solid rgba(10, 12, 20, 0.02);
+}
+
+.solHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.emoji {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff0f100;
+  font-size: 18px;
+  color: #ed2024;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.solutionCard h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.solBtn{
+  background-color:black;
+  color: #fff;
+  text-decoration: none;
+}
+
+.solText {
+  color: #ffffff;
+  line-height: 1.6;
+  margin-top: 6px;
+}
+
+/* Right area placeholder for other solution cards / grid */
+.solutionsGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+/* mini cards for grid (visuals only) */
+.smallCard {
+  height: 120px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fff 0%, #f6f6f6 100%);
+  border: 1px solid rgba(0,0,0,0.03);
+  box-shadow: 0 6px 18px rgba(10,12,20,0.03);
+}
+
+/* make sure header z-index is above panel backdrop if needed */
+.header {
+  z-index: 1100;
+}
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+/* --- MOBILE ADJUSTMENTS --- */
+@media (max-width: 991.98px) {
+  .solutionsPanel {
+    display: none; /* hide desktop full-width panel on smaller screens */
+  }
+}
+
+/* on smaller desktop widths, make inner layout stack */
+@media (max-width: 1199.98px) {
+  .panelInner {
+    padding: 22px;
+  }
+  .solutionsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 880px) {
+  .panelInner {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .solutionsGrid {
+    grid-template-columns: 1fr;
+  }
+  .solutionCard {
+    width: 100%;
+    min-width: auto;
   }
 }

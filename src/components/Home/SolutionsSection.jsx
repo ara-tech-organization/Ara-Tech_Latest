@@ -3,7 +3,8 @@ import styles from "./SolutionsSection.module.css";
 
 const SolutionsSection = () => {
   return (
-    <section className={styles.container}>
+    <section data-aos="fade-up"
+ className={styles.container}>
       <h2 className={styles.title}>
         Powerful solutions to unlock loyalty, efficiency, and growth
       </h2>

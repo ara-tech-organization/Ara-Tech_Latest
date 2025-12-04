@@ -13,7 +13,7 @@ const Organisation = () => {
      <Hero/>
      <FeatureHighlights/>
      <Suites/>
-     <TeamsGrid/>
+     {/* <TeamsGrid/> */}
      <TestimonialShowcase/>
     </>
   );

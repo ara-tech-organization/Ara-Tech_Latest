@@ -1,0 +1,84 @@
+:root {
+  --ink: #0f172a;
+  --muted: #6b7280;
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  background: #eeb8b8;
+  padding: 56px 16px;
+  overflow: hidden;
+  height: 30vh;
+
+  /* Center content perfectly */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* gradient blobs using a single absolutely positioned layer */
+.bg {
+  position: absolute;
+  inset: -10% 0;
+  z-index: -1;
+
+  /* two soft radial blobs left & right */
+  background:
+    radial-gradient(40% 60% at -10% 50%, rgba(222, 112, 255, 0.35), transparent 60%),
+    radial-gradient(40% 60% at 110% 50%, rgba(255, 112, 182, 0.35), transparent 60%);
+  filter: blur(12px);          /* extra softness */
+  pointer-events: none;
+}
+
+
+/* breadcrumb */
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.bcLink {
+  color: var(--muted);
+  text-decoration: none;
+}
+.bcLink:hover {
+  text-decoration: underline;
+}
+
+.sep { opacity: 0.6; }
+
+.bcCurrent { color: var(--muted); }
+
+/* title */
+.title {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.1;
+}
+
+/* optional tiny caption under title */
+.caption {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* taller on wide screens (like the reference) */
+@media (min-width: 1024px) {
+  .hero { padding: 80px 16px; }
+}
