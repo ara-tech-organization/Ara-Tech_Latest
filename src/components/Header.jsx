@@ -63,7 +63,7 @@ const Header = () => {
       {/* Desktop nav (≥768px) */}
       <nav className={styles.nav}>
         <NavLink
-          to="Ara-Tech/"
+          to="/"
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.activeLink : ""}`
           }
@@ -72,7 +72,7 @@ const Header = () => {
         </NavLink>
 
         <NavLink
-          to="Ara-Tech/about"
+          to="/about"
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.activeLink : ""}`
           }
@@ -81,7 +81,7 @@ const Header = () => {
         </NavLink>
 
         <NavLink
-          to="Ara-Tech/works"
+          to="/works"
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.activeLink : ""}`
           }
@@ -112,7 +112,7 @@ const Header = () => {
         </div>
 
         <NavLink
-          to="Ara-Tech/organisation"
+          to="/organisation"
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.activeLink : ""}`
           }
@@ -121,7 +121,7 @@ const Header = () => {
         </NavLink>
 
         <NavLink
-          to="Ara-Tech/contact"
+          to="/contact"
           className={({ isActive }) =>
             `${styles.menuItem} ${isActive ? styles.activeLink : ""}`
           }
@@ -174,7 +174,7 @@ const Header = () => {
         className={`${styles.mobilePanel} ${isMenuOpen ? styles.open : ""}`}
       >
         <NavLink
-          to="Ara-Tech/"
+          to="/"
           className={({ isActive }) =>
             `${styles.mobileLink} ${isActive ? styles.activeMobileLink : ""}`
           }
@@ -184,7 +184,7 @@ const Header = () => {
         </NavLink>
 
         <NavLink
-          to="Ara-Tech/about"
+          to="/about"
           className={({ isActive }) =>
             `${styles.mobileLink} ${isActive ? styles.activeMobileLink : ""}`
           }
@@ -228,7 +228,7 @@ const Header = () => {
         </div>
 
         <NavLink
-          to="Ara-Tech/organisation"
+          to="/organisation"
           className={({ isActive }) =>
             `${styles.mobileLink} ${isActive ? styles.activeMobileLink : ""}`
           }
@@ -238,7 +238,7 @@ const Header = () => {
         </NavLink>
 
         <NavLink
-          to="Ara-Tech/contact"
+          to="/contact"
           className={({ isActive }) =>
             `${styles.mobileLink} ${isActive ? styles.activeMobileLink : ""}`
           }

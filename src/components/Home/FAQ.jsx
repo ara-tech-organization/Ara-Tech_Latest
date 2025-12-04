@@ -122,7 +122,7 @@ export default function FAQ() {
               get back within one business day.
             </p>
 
-            <a href="/Ara-Tech/contact" className={styles.contactBtn}>
+            <a href="/contact" className={styles.contactBtn}>
               Contact Support
             </a>
           </div>

@@ -41,7 +41,7 @@ export default function GratitudeSection() {
         </p>
 
         {/* CTA BUTTON */}
-        <a href="/Ara-Tech/contact" className={styles.ctaButton}>
+        <a href="/contact" className={styles.ctaButton}>
           Work With Us
         </a>
       </div>

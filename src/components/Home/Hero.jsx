@@ -39,7 +39,7 @@ const Hero = () => {
         </p>
 
         <div className={styles.buttons}>
-          <Link to="/Ara-tech/contact" className={styles.primaryBtn}>
+          <Link to="/contact" className={styles.primaryBtn}>
             Contact us
           </Link>
         </div>

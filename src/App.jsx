@@ -66,12 +66,12 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
-          <Route path="Ara-Tech/" element={<Home />} />
-          <Route path="Ara-Tech/organisation" element={<Organisation />} />
-          <Route path="Ara-Tech/about" element={<About />} />
-          <Route path="Ara-Tech/works" element={<Works />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/organisation" element={<Organisation />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/works" element={<Works />} />
 
-          <Route path="Ara-Tech/contact" element={<Contact />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
